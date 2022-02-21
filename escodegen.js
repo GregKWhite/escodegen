@@ -505,7 +505,7 @@
         ((json && code < 0x20) /* SP */ ||
           (!json &&
             !escapeless &&
-            (code < 0x20 /* SP */ || code > 0x7e)) /* ~ */)
+            (code < 0x20 /* SP */ || code > 0x7e))) /* ~ */
       ) {
         result += escapeAllowedCharacter(code, str.charCodeAt(i + 1));
         continue;
@@ -3280,6 +3280,10 @@
 
     JSXText: function (expr, precedence, flags) {
       return expr.raw;
+    },
+
+    JSXEmptyExpression: function (expr, precedence, flags) {
+      return [];
     },
 
     PropertyDefinition: function (expr, precedence, flags) {
